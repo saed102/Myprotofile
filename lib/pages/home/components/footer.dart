@@ -10,10 +10,10 @@ final List<FooterItem> footerItems = [
   FooterItem(
       iconData: Icons.location_on,
       title: "ADDRESS",
-      text1: "Egypt,Cairo",
+      text1: "Egypt,Bani Sweif",
       text2: "",
       onTap: () {
-        Utilty.openMyLocation();
+        //Utilty.openMyLocation();
       }),
   FooterItem(
       iconData: Icons.phone,

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/models/project.dart';
@@ -29,7 +30,38 @@ class _HomeState extends ConsumerState<Home>
     with SingleTickerProviderStateMixin {
   late HomeProvider _homeProvider;
   final ScrollController scrollController = ScrollController();
+  final FocusNode _focusNode = FocusNode();
+  void _handleKeyEvent(RawKeyEvent event) {
+    var offset = scrollController.offset;
+    if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+      scrollController.animateTo(offset - 200, duration: Duration(milliseconds: 30), curve: Curves.linear);
 
+      setState(() {
+
+
+      });
+
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+      scrollController.animateTo(offset + 200, duration: Duration(milliseconds: 30), curve: Curves.linear);
+
+      setState(() {
+
+
+      });
+    }else if (event.logicalKey == LogicalKeyboardKey.space) {
+      scrollController.animateTo(offset + 400, duration: Duration(milliseconds: 30), curve: Curves.linear);
+
+      setState(() {
+
+
+      });
+    }
+  }
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
   @override
   void initState() {
     _homeProvider = ref.read(homeProvider);
@@ -144,66 +176,71 @@ class _HomeState extends ConsumerState<Home>
   @override
   Widget build(BuildContext context) {
     return ThemeSwitchingArea(
-      child: Scaffold(
-        key: Globals.scaffoldKey,
-        endDrawer: Drawer(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 24.0,
-              ),
-              child: ListView.separated(
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    onTap: () {
-                      if (Globals.scaffoldKey.currentState != null) {
-                        if (Globals.scaffoldKey.currentState!.isEndDrawerOpen) {
-                          Navigator.pop(context);
-                          _homeProvider.scrollBasedOnHeader(
-                              HeaderRow.headerItems[index]);
+      child: RawKeyboardListener(
+        focusNode: FocusNode(),
+        autofocus: true,
+        onKey: _handleKeyEvent,
+        child: Scaffold(
+          key: Globals.scaffoldKey,
+          endDrawer: Drawer(
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 24.0,
+                ),
+                child: ListView.separated(
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      onTap: () {
+                        if (Globals.scaffoldKey.currentState != null) {
+                          if (Globals.scaffoldKey.currentState!.isEndDrawerOpen) {
+                            Navigator.pop(context);
+                            _homeProvider.scrollBasedOnHeader(
+                                HeaderRow.headerItems[index]);
+                          }
                         }
-                      }
-                    },
-                    leading: Icon(
-                      HeaderRow.headerItems[index].iconData,
-                    ),
-                    title: Text(
-                      HeaderRow.headerItems[index].title,
-                      style: const TextStyle(),
-                    ),
-                    trailing: HeaderRow.headerItems[index].isDarkTheme != null
-                        ? HeaderRow.headerItems[index].isDarkTheme!
-                            ? SizedBox(
-                                width: 50,
-                                child: CustomSwitch(
-                                  value: ref.watch(themeProvider).isDarkMode,
-                                  onChanged: (val) {
-                                    ref.read(themeProvider).changeTheme(val);
-                                    ThemeSwitcher.of(context).changeTheme(
-                                        theme: ref
-                                            .read(themeProvider)
-                                            .getCurrentTheme,
-                                        isReversed: false // default: false
-                                        );
-                                  },
-                                ),
-                              )
-                            : null
-                        : null,
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    height: 10.0,
-                  );
-                },
-                itemCount: HeaderRow.headerItems.length,
+                      },
+                      leading: Icon(
+                        HeaderRow.headerItems[index].iconData,
+                      ),
+                      title: Text(
+                        HeaderRow.headerItems[index].title,
+                        style: const TextStyle(),
+                      ),
+                      trailing: HeaderRow.headerItems[index].isDarkTheme != null
+                          ? HeaderRow.headerItems[index].isDarkTheme!
+                              ? SizedBox(
+                                  width: 50,
+                                  child: CustomSwitch(
+                                    value: ref.watch(themeProvider).isDarkMode,
+                                    onChanged: (val) {
+                                      ref.read(themeProvider).changeTheme(val);
+                                      ThemeSwitcher.of(context).changeTheme(
+                                          theme: ref
+                                              .read(themeProvider)
+                                              .getCurrentTheme,
+                                          isReversed: false // default: false
+                                          );
+                                    },
+                                  ),
+                                )
+                              : null
+                          : null,
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(
+                      height: 10.0,
+                    );
+                  },
+                  itemCount: HeaderRow.headerItems.length,
+                ),
               ),
             ),
           ),
+          body: _buildPage(),
         ),
-        body: _buildPage(),
       ),
     );
   }

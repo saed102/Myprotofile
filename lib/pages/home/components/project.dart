@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,7 @@ import 'package:my_portfolio/utils/utils.dart';
 
 class ProjectSection extends StatelessWidget {
   final List<ProjectModel> projects;
+
   const ProjectSection({Key? key, required this.projects}) : super(key: key);
 
   @override
@@ -30,7 +32,6 @@ class ProjectSection extends StatelessWidget {
         child: Row(
           children: projects
               .map((e) => Container(
-
                   margin: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 15,
@@ -52,6 +53,9 @@ class ProjectSection extends StatelessWidget {
               return Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
+                    border: ref.watch(themeProvider).isDarkMode
+                        ? Border.all(color: Colors.grey.shade900, width: 1)
+                        : null,
                     color: ref.watch(themeProvider).isDarkMode
                         ? const Color.fromARGB(75, 12, 12, 7)
                         : Colors.grey[100],
@@ -164,8 +168,9 @@ class ProjectSection extends StatelessWidget {
                                       child: Text(
                                         (projectModel.buttonText ??
                                                 "Explore MORE")
-                                            .toUpperCase(),
+                                            ,
                                         style: const TextStyle(
+                                          color: Colors.black,
                                           fontSize: 13.0,
                                           fontWeight: FontWeight.bold,
                                         ),

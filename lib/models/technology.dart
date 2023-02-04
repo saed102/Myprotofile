@@ -23,15 +23,15 @@ class TechnologyConstants {
       TechnologyModel("C++", AppConstants.cPlusImage);
   static TechnologyModel javascript =
       TechnologyModel("Javascript", AppConstants.javascriptImage);
-  static TechnologyModel swift =
-      TechnologyModel("Swift", AppConstants.swiftImage);
+  static TechnologyModel dart =
+      TechnologyModel("Dart", AppConstants.dartImage);
   static TechnologyModel sceneKit =
       TechnologyModel("SceneKit", AppConstants.sceneKitImage);
 
   static List<TechnologyModel> technologyLearned = [
     flutter,
     firebase,
-    swift,
+    dart,
     cPlus,
     python,
   ];

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_portfolio/models/header_item.dart';
-import 'package:my_portfolio/utils/constants.dart';
-import 'package:my_portfolio/utils/utils.dart';
+
 
 final homeProvider = ChangeNotifierProvider((ref) => HomeProvider());
 
@@ -12,6 +11,9 @@ class HomeProvider extends ChangeNotifier {
   final servicesKey = GlobalKey();
   final aboutKey = GlobalKey();
   final homeKey = GlobalKey();
+
+
+
 
   Future<void> scrollToContact() async {
     final context = contactKey.currentContext;

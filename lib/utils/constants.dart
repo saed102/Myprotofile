@@ -6,6 +6,7 @@ const Color kPrimaryColor = Color(0xFFFFD800);
 const Color kBackgroundColor = Color.fromRGBO(7, 17, 26, 1);
 const Color kDangerColor = Color.fromARGB(255, 243, 22, 22);
 const Color kCaptionColor = Color.fromRGBO(166, 177, 187, 1);
+const Color kCaptionColor2 = Color.fromRGBO(7, 17, 26, 1);
 
 // Lets replace all static sizes
 const double kDesktopMaxWidth = 1000.0;
@@ -18,7 +19,7 @@ class AppConstants {
   static const linkedInUrl =
       "https://www.linkedin.com/in/m7med-sa3ed-5460b7233/";
   static const instagramUrl = "https://www.instagram.com/mohamed_saed_14/";
-  static const githubUrl = "https://github.com/AgnelSelvan";
+  static const githubUrl = "https://www.facebook.com/mohamedsaed14m/";
   static const freelancerUrl = "https://www.freelancer.com/u/mohamedsaed01";
   static const mediumUrl = "https://medium.com/@agnelselvan";
 
@@ -36,7 +37,7 @@ class AppConstants {
   static const emailImage = _socialImages + "email.png";
   static const linkedInImage = _socialImages + "linkedin-logo.png";
   static const instaImage = _socialImages + "instagram.png";
-  static const githubImage = _socialImages + "github.png";
+  static const githubImage = _socialImages + "facebook.png";
   static const freelancer = _socialImages + "freelancer.png";
   static const mediumImage = _socialImages + "medium.png";
 
@@ -48,17 +49,19 @@ class AppConstants {
   static const firebaseImage = _techImages + "firebase.png";
   static const razorPayImage = _techImages + "razorpay.png";
   static const cPlusImage = _techImages + "c++.png";
-  static const swiftImage = _techImages + "swift.png";
+  static const dartImage = _techImages + "dart.png";
   static const sceneKitImage = _techImages + "scenekit.jpeg";
   static const javascriptImage = _techImages + "javascript.png";
 
   static const _projectsImages = _images + "projects/";
-  static const smartStoreImage = _projectsImages + "1.jpeg";
+  static const yeshtryStoreImage = _projectsImages + "1.png";
   static const crossTheRoadImage = _projectsImages + "2.jpeg";
-  static const newsUpImage = _projectsImages + "3.jpeg";
+  static const newsUpImage = _projectsImages + "4.png";
   static const musicLabImage = _projectsImages + "4.jpeg";
   static const personalFaceImage = _projectsImages + "5.jpeg";
-  static const computerStoreImage = _projectsImages + "6.jpeg";
+  static const bloniStoreImage = _projectsImages + "6.png";
+  static const carHubAppImage = _projectsImages + "8.png";
+  static const carHubAppProviderImage = _projectsImages + "9.png";
 
   static const _gifs = _outputs + "gif/";
   static const portfolioGif = _gifs + "mobile.gif";

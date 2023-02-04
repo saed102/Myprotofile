@@ -19,7 +19,7 @@ final List<DesignProcess> designProcesses = [
   DesignProcess(
     title: "Develop",
     imagePath: "assets/images/develop.png",
-    subtitle: "",
+    subtitle: "saed di gferg jos ivsjj ty8ls",
   ),
   DesignProcess(
     title: "Document It",
@@ -56,7 +56,7 @@ class _ServiceSectionState extends State<ServiceSection> {
     // ),
     NameIconColor(
       index: 2,
-      title: "Github Open Source",
+      title: "Custom Code",
       iconData: Icons.code,
       color: Colors.orange[400]!,
     ),
@@ -84,39 +84,9 @@ class _ServiceSectionState extends State<ServiceSection> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Productive ,\n   Experienced",
-                style: GoogleFonts.josefinSans(
-                  fontWeight: FontWeight.w900,
-                  height: 1.8,
-                  letterSpacing: 2,
-                  fontSize: 18.0,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Utilty.openUrl(
-                      "https://github.com/AgnelSelvan/AgnelSelvan.github.io/raw/main/assets/files/Agnel-Selvan.pdf");
-                },
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    "DOWNLOAD CV",
-                    style: GoogleFonts.josefinSans(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           Text(
             "What I Do?",
@@ -149,8 +119,11 @@ class _ServiceSectionState extends State<ServiceSection> {
                   highlightColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
+                  splashColor:Colors.transparent ,
 
-                  onTap: () {},
+                  onTap: () {
+                    Utilty.openWhatsapp();
+                  },
                   onHover: (value) {
                         if(value){
                           setState(() {
@@ -174,6 +147,8 @@ class _ServiceSectionState extends State<ServiceSection> {
                             width: 200,
                             margin: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
+                              border:ref.watch(themeProvider).isDarkMode?
+                              Border.all(color: Colors.grey.shade900,width: 1):null,
                               color: ref.watch(themeProvider).isDarkMode
                                   ? const Color.fromARGB(75, 12, 12, 7)
                                   : Colors.grey[50],
@@ -250,6 +225,7 @@ class _ServiceSectionState extends State<ServiceSection> {
                             children: [
                               Image.asset(
                                 designProcesses[index].imagePath,
+                                color:kPrimaryColor,
                                 width: 40.0,
                               ),
                               const SizedBox(

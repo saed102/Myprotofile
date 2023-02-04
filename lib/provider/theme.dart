@@ -24,8 +24,7 @@ class MyThemes {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     colorScheme: const ColorScheme.light(),
-      primaryColor:Colors.red,
-   // primaryColor: const Color(0xFFFFD800),
+    primaryColor: const Color(0xFFFFD800),
     iconTheme: const IconThemeData(color: kPrimaryColor),
     primarySwatch: Colors.red,
     textButtonTheme: TextButtonThemeData(
